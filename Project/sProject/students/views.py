@@ -44,6 +44,7 @@ def reaStudentOne(request,name):
 
 
 def modConStudent(request):
+
     name = request.POST['name']
     major = request.POST['major']
     age = request.POST['age']
@@ -52,14 +53,19 @@ def modConStudent(request):
 
 
     #이제 기존에 등록되어 있던 사람의 데이터를 가져와서 교체하고 다시 save
-    qs = Student.objects.get(s_name = name)
-    qs.s_name = name
-    qs.s_major = major
-    qs.s_age = age
-    qs.s_grade = grade
-    qs.s_gender = gender
+    s_qs = Student.objects.get(s_name = name)
+    s_qs.s_name = name
+    s_qs.s_major = major
+    s_qs.s_age = age
+    s_qs.s_grade = grade
+    s_qs.s_gender = gender
 
-    qs.save()
+    s_qs.save()
 
     return HttpResponseRedirect(reverse('students:stuAll'))
 
+def delConStudent(request, name):
+    s_qs = Student.objects.get(s_name = name)
+    s_qs.delete()
+
+    return HttpResponseRedirect(reverse('students:stuAll'))

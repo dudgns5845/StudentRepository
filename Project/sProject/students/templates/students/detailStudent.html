@@ -14,17 +14,17 @@
     name: {{student_info.s_name}}<br>
     major: {{student_info.s_major}}<br>
     age: {{student_info.s_age}}<br>
-    grade: {{student_info.grade}}<br>
+    grade: {{student_info.s_grade}}<br>
     gender: {{student_info.s_gender}}<br>
-    
+
     {% else %}
-        <p>Studnet:0</p>
+    <p>Studnet:0</p>
     {% endif %}
 
     <br>
 
     <a href="{% url 'students:stuMod' student_info.s_name %}">수정</a>
-    <a href="#none">삭제</a>
+    <a href="{% url 'students:stuDel' student_info.s_name %}">삭제</a>
     <a href="{% url 'students:stuAll'%}">학생리스트</a>
     <a href="{% url 'students:reg' %}">신규학생등록</a>
 

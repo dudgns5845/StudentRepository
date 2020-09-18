@@ -10,20 +10,20 @@
     <p>Modify Student</p>
 
     {% if student_info %}
-        <form action="{% url 'students:modCon' %}" method="POST">
-            {% csrf_token %}
-            <!--지금은 저장된 값을 수정하기 때문에 저장된 값으로 초기화를 해줘야한다. value-->
-            name : {{ student_info.s_name }}</br>
-            <input type="hidden" name="name" value = {{stduent_info.s_name}}><br>
-            major : <input type="text" name="major" value = {{stduent_info.s_major}}><br>
-            age : <input type="text" name="age" value = {{stduent_info.s_age}}><br>
-            grade : <input type="text" name="grade" value = {{stduent_info.s_grade}}><br>
-            gender : <input type="text" name="gender" value = {{stduent_info.s_gender}}><br>
-            <input type="submit" name="Modify"><br>
-        </form>
+    <form action="{% url 'students:modCon' %}" method="POST">
+        {% csrf_token %}
+        <!--지금은 저장된 값을 수정하기 때문에 저장된 값으로 초기화를 해줘야한다. value-->
+        name : {{ student_info.s_name }}</br>
+        <input type="hidden" name="name" value={{student_info.s_name}}></br>
+        major : <input type="text" name="major" value={{student_info.s_major}}></br>
+        age : <input type="text" name="age" value={{student_info.s_age}}></br>
+        grade : <input type="text" name="grade" value={{student_info.s_grade}}></br>
+        gender : <input type="text" name="gender" value={{student_info.s_gender}}></br>
+        <input type="submit" name="Modify"></br>
+    </form>
     {% else %}
-    
-        <p>student : 0 </p>
+
+    <p>student : 0 </p>
 
     {% endif%}
 
