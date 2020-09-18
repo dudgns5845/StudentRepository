@@ -29,3 +29,37 @@ def reaStudentAll(request):
     #학생 데이터를 list로 넘겨줌
     context = {'student_list': qs}
     return render(request,'students/readStudents.html',context)
+
+
+def detStudent(request,name):
+    qs = Student.objects.get(s_name = name)
+    context = {'student_info': qs}
+    return render(request,'students/detailStudent.html',context)
+
+
+def reaStudentOne(request,name):
+    qs = Student.objects.get(s_name = name)
+    context = {'student_info': qs}
+    return render(request,'students/modifyStudent.html',context)
+
+
+def modConStudent(request):
+    name = request.POST['name']
+    major = request.POST['major']
+    age = request.POST['age']
+    grade = request.POST['grade']
+    gender = request.POST['gender']
+
+
+    #이제 기존에 등록되어 있던 사람의 데이터를 가져와서 교체하고 다시 save
+    qs = Student.objects.get(s_name = name)
+    qs.s_name = name
+    qs.s_major = major
+    qs.s_age = age
+    qs.s_grade = grade
+    qs.s_gender = gender
+
+    qs.save()
+
+    return HttpResponseRedirect(reverse('students:stuAll'))
+

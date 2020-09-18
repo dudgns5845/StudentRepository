@@ -13,7 +13,7 @@
     <ol>
         {% for s in student_list %}
         <li>
-            <a href="#none">{{s.s_name}}</a>
+            <a href="{% url 'students:stuDet' s.s_name %}">{{s.s_name}}</a>
             <a href="#none">수정</a>
             <a href="#none">삭제</a>
         </li>
